@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "手稿分卷档案 manifest",
+  "description": "每个 GitHub 分卷仓库根目录下的清单文件。",
+  "type": "object",
+  "required": ["volume", "status", "created", "manuscripts"],
+  "properties": {
+    "volume": {
+      "type": "string",
+      "pattern": "^manuscript-\\d{4}$",
+      "description": "本卷仓库名，如 manuscript-0001"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "archived", "error"]
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "本卷创建日期 YYYY-MM-DD"
+    },
+    "closed": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "封存日期，未封存时为 null"
+    },
+    "size_bytes": {
+      "type": "number",
+      "description": "本卷累计字节数（估算）"
+    },
+    "manuscripts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "date", "title", "images"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^\\d{8}-\\d{3}$",
+            "description": "手稿编号 YYYYMMDD-序号，永久不变"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "手稿日期 YYYY-MM-DD"
+          },
+          "title": { "type": "string", "description": "手稿标题" },
+          "category": { "type": "string", "description": "分类" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "标签"
+          },
+          "note": { "type": "string", "description": "备注" },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^\\d{4}/\\d{2}/\\d{8}-\\d{3}-\\d{2}\\.(jpg|png|webp|gif|bmp)$"
+            },
+            "description": "图片相对路径列表，顺序即展示顺序"
+          }
+        }
+      }
+    }
+  }
+}

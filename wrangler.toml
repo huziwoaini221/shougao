@@ -1,0 +1,16 @@
+name = "manuscript-web"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[vars]
+OWNER = ""
+REPO_PREFIX = "manuscript"
+WEB_REPO = "manuscript-web"
+IMAGE_MAX_EDGE = "1920"
+IMAGE_QUALITY = "0.82"
+THRESHOLD_MB = "380"
+HARD_CAP_MB = "400"
