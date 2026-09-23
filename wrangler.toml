@@ -7,7 +7,7 @@ directory = "./public"
 binding = "ASSETS"
 
 [vars]
-OWNER = ""
+OWNER = "huziwoaini221"
 REPO_PREFIX = "manuscript"
 WEB_REPO = "manuscript-web"
 IMAGE_MAX_EDGE = "1920"
